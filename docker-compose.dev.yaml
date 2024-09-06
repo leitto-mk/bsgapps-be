@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  bsgappmanagement:
+    image: bsgappmanagement
+    environment:
+      APP_KEY: 'base64:8Ikbh28CEy6ypnN3gAb7YTaJdjHJDRAL9SZc7zIWw/k='
+      TIMEZONE: Asia/Makassar
+      CACHE_PREFIX: qris-um
+      APP_DEBUG: false
+      APP_ENV: proxy
+      CACHE_DRIVER: file
+      SESSION_DRIVER: file
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: '3306'
+      DB_DATABASE: hrms
+      DB_USERNAME: root
+      DB_PASSWORD:
+      DB_CONNECTION_HRMS: mysql
+      DB_HOST_HRMS: 127.0.0.1
+      DB_PORT_HRMS: '3306'
+      DB_DATABASE_HRMS: hrms
+      DB_USERNAME_HRMS: root
+      DB_PASSWORD_HRMS:
+      DB_CONNECTION_DBA: mysql
+      DB_HOST_DBA: 127.0.0.1
+      DB_PORT_DBA: '3306'
+      DB_DATABASE_DBA: db_bsg_app
+      DB_USERNAME_DBA: root
+      DB_PASSWORD_DBA:
+      JWT_SECRET_KEY: r4NpizYBoT3WoolVlIUlSyHS6JJ1UcCsDpjIj0JKPrxnrKDyRp21rRDjsrHibK5B
+      LOGIN_PASSWORD_SET: UzFuM3JHMV9DNV9EM1ZsMHAzUg==
+      LOGIN_PASSWORD_DEF: 8eb98b33c777a27ab57a35ee1dc3a389
+    restart: unless-stopped
+    ports:
+      - published: '33063'
+        target: 80
