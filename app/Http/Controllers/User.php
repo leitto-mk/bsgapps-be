@@ -82,7 +82,7 @@ class User extends Controller
 
         /** Validate Request */
         $validator = [
-            'status_admin' => 'required'
+            'is_admin' => 'required'
         ];
         $validator = Validator::make($body, $validator);
         if ($validator->fails()) {
@@ -101,7 +101,7 @@ class User extends Controller
 
         try {
             $body = [
-                'is_admin' => $body['status_admin']
+                'is_admin' => $body['is_admin']
             ];
 
             $update = UserModel::where('id_mst_emp', $idMstEmp)->update($body);
@@ -142,7 +142,7 @@ class User extends Controller
 
         /** Validate Request */
         $validator = [
-            'status_aktif' => 'required'
+            'flag_active' => 'required'
         ];
         $validator = Validator::make($body, $validator);
         if ($validator->fails()) {
@@ -161,7 +161,7 @@ class User extends Controller
 
         try {
             $body = [
-                'flag_active' => $body['status_aktif']
+                'flag_active' => $body['flag_active']
             ];
 
             $update = UserModel::where('id_mst_emp', $idMstEmp)->update($body);

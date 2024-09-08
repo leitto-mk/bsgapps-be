@@ -204,6 +204,10 @@ class Project extends Controller
             ], 422);
         }
 
+        Log::info($body);
+
+        ProjectModel::create($body);
+
         return response()->json($tokenPayload, 200);
     }
 }
