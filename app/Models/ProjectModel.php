@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\ProjectPicModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class ProjectModel extends Model
 {
@@ -11,7 +12,31 @@ class ProjectModel extends Model
     protected $table = 'mst_project';
     protected $primaryKey = 'id_mst_project';
     public $timestamps = true;
-    // protected $fillable = ['id_mst_project','nama_project'];
+    protected $fillable = [
+        'nama_project',
+        'nama_project',
+        'deskripsi',
+        'flag_proposal',
+        'flag_brd',
+        'id_priority',
+        'status',
+        'flag_release',
+        'dept_id',
+        'div_id',
+        'id_inputter',
+        'inputter_title',
+        'inputter_name',
+        'id_approval',
+        'approval_title',
+        'approval_name',
+        'id_approval_it',
+        'approval_it_title',
+        'approval_it_name',
+        'date_created',
+        'date_init',
+        'date_released',
+        'flag_active',
+    ];
 
     public function project($div = NULL)
     {
@@ -29,7 +54,7 @@ class ProjectModel extends Model
     public function projectDetail($idMstProject)
     {
         $trxProject = DB::connection('bsg_app')->table('trx_project')->where('id_mst_project', $idMstProject)->get();
-        $trxProjectPic = DB::connection('bsg_app')->table('trx_project_pic')->where('id_mst_project', $idMstProject)->get();
+        $trxProjectPic = ProjectPicModel::with('emp')->where('id_mst_project', $idMstProject)->get();
         $trxSubTask = DB::connection('bsg_app')->table('trx_sub_task')->where('id_mst_project', $idMstProject)->get();
 
         $result = [

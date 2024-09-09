@@ -184,27 +184,6 @@ class Project extends Controller
         unset($request['token_payload']);
 
         $body = $request->all();
-        return response()->json($tokenPayload, 200);
-        /** Validate Request */
-        $validator = [
-            'role' => 'required'
-        ];
-        $validator = Validator::make($body, $validator);
-        if ($validator->fails()) {
-            $errors = json_decode($validator->errors(), TRUE);
-            $errorsMessage = [];
-
-            foreach ($errors as $k => $v) {
-                $errorsMessage[] = $v[0];
-            }
-
-            return response()->json([
-                'status' => FALSE,
-                'message' => implode(" & ", $errorsMessage)
-            ], 422);
-        }
-
-        Log::info($body);
 
         ProjectModel::create($body);
 

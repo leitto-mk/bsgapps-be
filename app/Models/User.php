@@ -36,6 +36,7 @@ class User extends Authenticatable
                     'is_admin',
                     'emp_phist.pos_name',
                     'emp.name as nama_pegawai',
+                    'app_user.username',
                     'emp_phist.dept_id',
                     'emp_phist.div_id'
                 ]

@@ -28,7 +28,7 @@ class ProjectPic extends Controller
         $body = $request->all();
         /** Validate Request */
         $validator = [
-            'id_role_it' => 'required'
+            'id_mst_project' => 'required'
         ];
         $validator = Validator::make($body, $validator);
         if ($validator->fails()) {
