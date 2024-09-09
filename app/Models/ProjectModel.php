@@ -133,4 +133,16 @@ class ProjectModel extends Model
 
         return $result;
     }
+
+    public function pic() {
+        return $this->hasMany(ProjectPicModel::class, 'id_mst_project', 'id_mst_project');
+    }
+    
+    public function task() {
+        return $this->hasMany(Task::class, 'id_mst_project', 'id_mst_project');
+    }
+
+    public function taskLog() {
+        return $this->hasManyThrough(TaskLog::class, Task::class, 'id_trx_sub_task', 'id_trx_sub_task', 'id_mst_project', 'id_mst_project');
+    }
 }
