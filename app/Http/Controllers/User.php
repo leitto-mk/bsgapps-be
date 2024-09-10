@@ -202,7 +202,7 @@ class User extends Controller
 
         /** Validate Request */
         $validator = [
-            'role' => 'required'
+            'id_role_it' => 'required'
         ];
         $validator = Validator::make($body, $validator);
         if ($validator->fails()) {
@@ -221,7 +221,7 @@ class User extends Controller
 
         try {
             $body = [
-                'id_role_it' => $body['role']
+                'id_role_it' => $body['id_role_it']
             ];
 
             $update = UserModel::where('id_mst_emp', $idMstEmp)->update($body);

@@ -134,11 +134,11 @@ class ProjectModel extends Model
         return $result;
     }
 
-    public function pic() {
+    public function trx_project_pic() {
         return $this->hasMany(ProjectPicModel::class, 'id_mst_project', 'id_mst_project');
     }
     
-    public function task() {
+    public function trx_sub_task() {
         return $this->hasMany(Task::class, 'id_mst_project', 'id_mst_project');
     }
 
