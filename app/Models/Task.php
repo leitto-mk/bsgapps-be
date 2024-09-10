@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'bsg_app';
+    
+    /**
      * The table associated with the model.
      *
      * @var string

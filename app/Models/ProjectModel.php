@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Task;
 use App\Models\ProjectPicModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -55,7 +56,7 @@ class ProjectModel extends Model
     {
         $trxProject = DB::connection('bsg_app')->table('trx_project')->where('id_mst_project', $idMstProject)->get();
         $trxProjectPic = ProjectPicModel::with('emp')->where('id_mst_project', $idMstProject)->get();
-        $trxSubTask = DB::connection('bsg_app')->table('trx_sub_task')->where('id_mst_project', $idMstProject)->get();
+        $trxSubTask = Task::with('emp')->where('id_mst_project', $idMstProject)->get();
 
         $result = [
             "trx_project" => $trxProject,
